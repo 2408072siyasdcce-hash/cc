@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,11 +60,85 @@
                 </div>
             </div>
         </section>
+
+        <!-- Customer enquiry form -->
+        <section class="contact">
+            <h2>Contact Sweet Crumbs</h2>
+            <p>Have a question or want to enquire about a cake? Contact us!</p>
+
+            <form id="contactForm">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    name="message"
+                    placeholder="Your message or cake enquiry"
+                    rows="5"
+                    required
+                ></textarea>
+
+                <button type="submit" id="submitBtn">
+                    Submit Enquiry
+                </button>
+
+                <p id="status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p>© 2026 Sweet Crumbs Bakery | Freshness in every bite!</p>
     </footer>
+
+    <script>
+        // Replace this with your deployed Google Apps Script URL.
+        const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("status");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            if (scriptURL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+                status.textContent = "Please add your Google Apps Script URL.";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            status.textContent = "Submitting your enquiry...";
+
+            try {
+                await fetch(scriptURL, {
+                    method: "POST",
+                    body: new URLSearchParams(new FormData(form)),
+                    mode: "no-cors"
+                });
+
+                status.textContent =
+                    "Your request was sent. Please verify it appears in Google Sheets.";
+                form.reset();
+
+            } catch (error) {
+                status.textContent =
+                    "Unable to send your enquiry. Please try again.";
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 
 </body>
 </html>
