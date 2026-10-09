@@ -103,7 +103,7 @@
 
     <script>
         // Replace this with your deployed Google Apps Script URL.
-        const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyWWbs17yzFTgzbHe5hC4YUmw5rum9KRnuUu94BWyMH2plre8QJlxxdwjIBLOX9q4Gh/exec";
 
         const form = document.getElementById("contactForm");
         const status = document.getElementById("status");
@@ -112,7 +112,7 @@
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
 
-            if (scriptURL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+            if (scriptURL === "https://script.google.com/macros/s/AKfycbyWWbs17yzFTgzbHe5hC4YUmw5rum9KRnuUu94BWyMH2plre8QJlxxdwjIBLOX9q4Gh/exec") {
                 status.textContent = "Please add your Google Apps Script URL.";
                 return;
             }
